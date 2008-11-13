@@ -40,7 +40,6 @@ error 422.
 TODO list
 =========
 
- * Follow href attributes in tags like img and link
  * The ability to authenticate with sites
  * A way to submit valid form data
  * Look in the config/ directory for a configuration file

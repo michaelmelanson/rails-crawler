@@ -49,6 +49,14 @@ describe "Crawler" do
     results.compact.should_not be(:empty)
   end
   
+  it "should crawl link tags" do
+    results = @crawler.results.map do |m|
+      true if m[:url] == "/stylesheets/scaffold.css" and m[:method] == :get
+    end
+
+    results.compact.should_not be(:empty)
+  end    
+  
   it "should crawl pages reachable via links" do
     results = @crawler.results.map do |m|
       true if m[:url] == "/cars" and m[:method] == :get

@@ -120,10 +120,14 @@ class Crawler
       {:url => a[:src], :method => :get}
     end
 
+    links = Hpricot(body).search("//link").map do |a|
+      {:url => a[:href], :method => :get}
+    end
+
     buttons = Hpricot(body).search("//form").map do |f|
       {:url => f[:action], :method => f[:method].to_sym}
     end
     
-    anchors + images + buttons
+    anchors + images + links + buttons
   end    
 end
