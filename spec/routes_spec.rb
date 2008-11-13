@@ -41,6 +41,14 @@ describe "Crawler" do
     found.should == 2
   end      
   
+  it "should crawl image tags" do
+    results = @crawler.results.map do |m|
+      true if m[:url] == "/images/rails.png" and m[:method] == :get
+    end
+
+    results.compact.should_not be(:empty)
+  end
+  
   it "should crawl pages reachable via links" do
     results = @crawler.results.map do |m|
       true if m[:url] == "/cars" and m[:method] == :get
